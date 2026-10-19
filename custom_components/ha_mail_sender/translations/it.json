@@ -1,0 +1,118 @@
+{
+  "title": "HA Mail Sender",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mail salvata",
+        "description": "Scegli un account già collegato con Google Mail. Nessuna mail viene inviata durante la configurazione.",
+        "data": {
+          "name": "Nome della mail salvata",
+          "google_entry_id": "Account Google Mail"
+        }
+      },
+      "message": {
+        "title": "Messaggio e limite",
+        "data": {
+          "sender": "Indirizzo mittente verificato",
+          "sender_name": "Nome del mittente",
+          "to": "A (indirizzi separati da virgole)",
+          "cc": "Cc (indirizzi separati da virgole)",
+          "bcc": "Ccn (indirizzi separati da virgole)",
+          "subject": "Oggetto",
+          "body": "Testo",
+          "policy": "Limite di invio",
+          "interval_hours": "Intervallo minimo in ore (solo limite a intervallo)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossibile leggere gli alias Gmail. Verifica il collegamento Google Mail e riprova.",
+      "no_verified_senders": "Nessun mittente verificato disponibile.",
+      "invalid_config": "Controlla gli indirizzi, i campi obbligatori e il limite."
+    },
+    "abort": {
+      "google_account_missing": "Aggiungi prima Google Mail in Impostazioni → Dispositivi e servizi.",
+      "not_loaded": "Carica prima questa integrazione.",
+      "reset_not_allowed": "Puoi sbloccare solo un invio fallito o incerto.",
+      "reset_complete": "Blocco rimosso. La mail non è stata inviata."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "menu_options": {
+          "edit": "Modifica la mail",
+          "reset": "Sblocca un invio fallito o incerto"
+        }
+      },
+      "edit": {
+        "title": "Mail salvata",
+        "description": "Scegli un account già collegato con Google Mail. Nessuna mail viene inviata durante la configurazione.",
+        "data": {
+          "name": "Nome della mail salvata",
+          "google_entry_id": "Account Google Mail"
+        }
+      },
+      "message": {
+        "title": "Messaggio e limite",
+        "data": {
+          "sender": "Indirizzo mittente verificato",
+          "sender_name": "Nome del mittente",
+          "to": "A (indirizzi separati da virgole)",
+          "cc": "Cc (indirizzi separati da virgole)",
+          "bcc": "Ccn (indirizzi separati da virgole)",
+          "subject": "Oggetto",
+          "body": "Testo",
+          "policy": "Limite di invio",
+          "interval_hours": "Intervallo minimo in ore (solo limite a intervallo)"
+        }
+      },
+      "reset": {
+        "title": "Sblocco manuale",
+        "description": "Controlla prima la posta inviata: un errore non esclude che Gmail abbia accettato la mail. Confermare permette un nuovo tentativo, ma non invia nulla.",
+        "data": {
+          "confirm": "Ho controllato la posta e voglio consentire un nuovo tentativo"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossibile leggere gli alias Gmail. Verifica il collegamento Google Mail e riprova.",
+      "no_verified_senders": "Nessun mittente verificato disponibile.",
+      "invalid_config": "Controlla gli indirizzi, i campi obbligatori e il limite."
+    },
+    "abort": {
+      "google_account_missing": "Aggiungi prima Google Mail in Impostazioni → Dispositivi e servizi.",
+      "not_loaded": "Carica prima questa integrazione.",
+      "reset_not_allowed": "Puoi sbloccare solo un invio fallito o incerto.",
+      "reset_complete": "Blocco rimosso. La mail non è stata inviata."
+    }
+  },
+  "selector": {
+    "policy": {
+      "options": {
+        "daily": "Una volta al giorno",
+        "interval": "Intervallo minimo",
+        "none": "Nessun limite"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "send": {
+        "name": "Invia"
+      }
+    },
+    "sensor": {
+      "status": {
+        "name": "Stato",
+        "state": {
+          "ready": "Pronto",
+          "pending": "Invio in corso",
+          "accepted": "Accettata da Gmail",
+          "failed": "Invio fallito o incerto",
+          "uncertain": "Esito incerto"
+        }
+      }
+    }
+  }
+}

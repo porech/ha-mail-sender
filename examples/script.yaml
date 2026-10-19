@@ -1,0 +1,8 @@
+# Add through Settings > Automations & scenes > Scripts > Edit in YAML.
+# Select the actual Send button entity created on your installation.
+alias: Send saved request
+mode: single
+sequence:
+  - action: button.press
+    target:
+      entity_id: button.saved_request_send

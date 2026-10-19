@@ -1,0 +1,118 @@
+{
+  "title": "HA Mail Sender",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Saved email",
+        "description": "Choose an existing Google Mail account. Setup never sends an email.",
+        "data": {
+          "name": "Saved email name",
+          "google_entry_id": "Google Mail account"
+        }
+      },
+      "message": {
+        "title": "Message and send limit",
+        "data": {
+          "sender": "Verified sender address",
+          "sender_name": "Sender display name",
+          "to": "To (comma-separated addresses)",
+          "cc": "Cc (comma-separated addresses)",
+          "bcc": "Bcc (comma-separated addresses)",
+          "subject": "Subject",
+          "body": "Message",
+          "policy": "Send limit",
+          "interval_hours": "Minimum interval in hours (interval policy only)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot read Gmail aliases. Check the Google Mail connection and try again.",
+      "no_verified_senders": "No verified senders available.",
+      "invalid_config": "Check addresses, required fields and the send limit."
+    },
+    "abort": {
+      "google_account_missing": "Add Google Mail in Settings → Devices & services first.",
+      "not_loaded": "Load this integration first.",
+      "reset_not_allowed": "Only failed or uncertain attempts can be reset.",
+      "reset_complete": "Reservation reset. No email has been sent."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "menu_options": {
+          "edit": "Edit saved email",
+          "reset": "Reset a failed or uncertain attempt"
+        }
+      },
+      "edit": {
+        "title": "Saved email",
+        "description": "Choose an existing Google Mail account. Setup never sends an email.",
+        "data": {
+          "name": "Saved email name",
+          "google_entry_id": "Google Mail account"
+        }
+      },
+      "message": {
+        "title": "Message and send limit",
+        "data": {
+          "sender": "Verified sender address",
+          "sender_name": "Sender display name",
+          "to": "To (comma-separated addresses)",
+          "cc": "Cc (comma-separated addresses)",
+          "bcc": "Bcc (comma-separated addresses)",
+          "subject": "Subject",
+          "body": "Message",
+          "policy": "Send limit",
+          "interval_hours": "Minimum interval in hours (interval policy only)"
+        }
+      },
+      "reset": {
+        "title": "Manual reset",
+        "description": "Check Sent Mail first: an error may occur after Gmail accepted the message. Confirming allows another attempt but sends nothing.",
+        "data": {
+          "confirm": "I checked my mailbox and want to allow another attempt"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot read Gmail aliases. Check the Google Mail connection and try again.",
+      "no_verified_senders": "No verified senders available.",
+      "invalid_config": "Check addresses, required fields and the send limit."
+    },
+    "abort": {
+      "google_account_missing": "Add Google Mail in Settings → Devices & services first.",
+      "not_loaded": "Load this integration first.",
+      "reset_not_allowed": "Only failed or uncertain attempts can be reset.",
+      "reset_complete": "Reservation reset. No email has been sent."
+    }
+  },
+  "selector": {
+    "policy": {
+      "options": {
+        "daily": "Once per calendar day",
+        "interval": "Minimum interval",
+        "none": "No limit"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "send": {
+        "name": "Send"
+      }
+    },
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "ready": "Ready",
+          "pending": "Sending",
+          "accepted": "Accepted by Gmail",
+          "failed": "Failed or uncertain",
+          "uncertain": "Uncertain"
+        }
+      }
+    }
+  }
+}

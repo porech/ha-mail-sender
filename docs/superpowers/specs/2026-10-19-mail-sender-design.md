@@ -1,54 +1,55 @@
 # HA Mail Sender
 
-## Intent
-Send prewritten emails from a Home Assistant button, automation or Alexa routine.
-Users configure each message in Home Assistant, with real To/Cc/Bcc fields and a
-persistent per-message rate limit. No personal addresses, medical details or
-credentials belong in this public repository.
+## Intent and scope
 
-## First release
-Native custom integration `ha_mail_sender`, installable as a HACS custom repository.
-Each config entry represents one named saved email, with its own SMTP settings,
-subject, multiline plain-text body, recipients, and rate-limit policy. Users can
-add entries and edit their settings through native config/options forms. This
-deliberately avoids a custom frontend and a separate server. Reusing SMTP settings
-across messages is a possible future enhancement.
+Public `porech/ha-mail-sender`, a HACS custom integration for named, saved emails
+sent from a Home Assistant button, automation or Alexa routine. Native config
+and options forms cover sender, To/Cc/Bcc, subject, multiline text and per-email
+limits. No personal data or credentials are published. English and Italian UI/docs.
 
-Each entry exposes a send button and status sensor. Button presses, including
-Alexa scene activation, go through the same gate. Status includes last accepted
-send, next permitted time and a safe error category, never recipients/body/password.
-Alexa phrases are configured in the Alexa app; this integration does not configure
-Alexa routines or promise spoken delivery confirmation.
+The user clarified Gmail and an already verified custom Send mail as address.
+Use the official Google Mail integration's existing OAuth connection through
+Home Assistant's public OAuth helpers. No fork of the SMTP Email Notifier project,
+no SMTP credentials and no new Google OAuth implementation. The authenticated
+mailbox is always `users/me`; the selected verified alias goes into MIME From.
+Read aliases through `settings/sendAs`, validate again at submission, send through
+`messages/send`, and require a returned message ID. The user must configure Google
+Mail first if absent. No live mail is sent during development or setup.
 
-## Delivery and limits
-Policies: once per local calendar day (Home Assistant timezone), a configurable
-rolling interval in hours, or no limit. Default: calendar day. Repeated requests
-are dropped immediately, never queued. A per-entry lock serializes delivery;
-concurrent requests are dropped even with limits disabled. State is stored before
-SMTP submission to survive a restart during delivery. A persisted pending attempt
-is treated as uncertain after restart and retains its limit. Explicit transport
-errors retain a conservative limit too, since server acceptance may be ambiguous.
-No automatic retries, and no public bypass button. Status distinguishes accepted,
-blocked, failed/uncertain. A user can deliberately reset a failed/uncertain attempt
-through the integration's options menu after checking their mailbox.
+## Native UI and lifecycle
 
-SMTP runs off the event loop. Support STARTTLS and implicit TLS with certificate
-verification, and optional unauthenticated local relay. Validate headers, addresses,
-port, interval and required text. A message has a single To/Cc/Bcc envelope;
-Bcc must not appear in headers. Partial recipient refusal is an error, with no
-automatic resend to successful recipients. SMTP acceptance is not inbox delivery.
+One config entry per saved email references a Google Mail entry ID and contains
+its own fields and limit settings. No copied OAuth secrets. Config form chooses
+account then verified alias and message fields; options edit or reset a failed or
+uncertain reservation. Expose a Send button and Status enum sensor, with attempt,
+acceptance, next allowed timestamps and last request result. Never expose content,
+recipients or credentials as entity state. Renaming/editing preserves IDs/history.
 
-## Publication and verification
-Public GitHub repository `porech/ha-mail-sender`, MIT license, English and Italian
-UI strings, English README and Italian quickstart, generic examples, CI and a
-tagged initial prerelease. Require Home Assistant 2026.1+ / Python 3.13+ (verify
-against the locally installable Home Assistant test environment). No live mail
-is sent while developing. Tests must cover MIME/envelope recipients, invalid
-configuration, limits at local midnight/DST, concurrency, restart state, errors,
-and native config/options/entity lifecycle against real Home Assistant APIs.
+Alexa phrases are configured in the Alexa app through the existing connection.
+If direct button exposure is unavailable, document a Home Assistant script wrapping
+`button.press` and expose that script as a scene. No promised voice confirmation.
 
-## Decisions made by the builder
-One saved email per config entry keeps adding/editing/removing messages native.
-Conservative handling of uncertain delivery trades an occasional manual check for
-avoiding repeated mail. Credential checks during setup connect/login only, never
-send a test message. Public examples describe generic requests.
+## Limits and delivery
+
+Daily policy uses Home Assistant's local calendar date; interval policy uses elapsed
+UTC time, including repeated DST hours; none disables successive-request limits.
+Concurrent requests are dropped. No queuing or retries. Save a pending reservation
+before contacting Gmail. Persisted pending becomes uncertain after restart and
+retains the limit. Any send failure conservatively retains the limit. Explicit
+manual reset is restricted to failed/uncertain states after a mailbox check; reset
+never sends mail. Accepted means API acceptance, not inbox delivery.
+
+An active task is shielded from caller cancellation. Unload/reload closes the gate
+and waits for it before replacement; deleting an entry removes its history. Failed
+reservation save prevents sending; failed final save leaves durable pending history.
+Policy edits retain the timestamp and apply the new policy. Backups/power failure
+cannot offer an exactly-once guarantee.
+
+## Build and verification
+
+Python 3.13+, Home Assistant 2026.2.3+; no added runtime dependencies. Temporary
+venvs only. Test native Home Assistant config/options/entity lifecycle and mocked
+Gmail HTTP boundaries, alias validation, From/mailbox distinction, errors, Unicode,
+concurrency, restart, storage failures and DST. English README, Italian quickstart,
+MIT license, generic examples and CI. Publish an early prerelease, explicitly
+stating that live Gmail and Alexa remain untested until configured on the user's HA.

@@ -1,0 +1,6 @@
+# Add a Manual card to a dashboard. Replace IDs with your actual entities.
+type: entities
+title: Saved request
+entities:
+  - entity: button.saved_request_send
+  - entity: sensor.saved_request_status
