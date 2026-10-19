@@ -33,7 +33,8 @@ Being signed into Gmail in a browser does not connect Home Assistant.
 
 1. In HACS, open **⋮ → Custom repositories**.
 2. Add `https://github.com/porech/ha-mail-sender`, category **Integration**.
-3. Download **HA Mail Sender** and restart Home Assistant.
+3. Download **HA Mail Sender** (enable prereleases if needed for the initial beta)
+   and restart Home Assistant.
 4. Open **Settings → Devices & services → Add integration → HA Mail Sender**.
 5. Name the saved email, choose the Google Mail account, select the sender alias,
    then enter To, optional Cc/Bcc, subject, message and limit.

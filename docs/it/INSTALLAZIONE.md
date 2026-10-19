@@ -24,7 +24,8 @@ Richiede Home Assistant 2026.2.3 o successivo.
 
 1. In HACS apri **⋮ → Repository personalizzati**.
 2. Inserisci `https://github.com/porech/ha-mail-sender`, categoria **Integrazione**.
-3. Scarica HA Mail Sender e riavvia Home Assistant.
+3. Scarica HA Mail Sender (abilita le versioni beta, se richiesto per questa prima
+   versione) e riavvia Home Assistant.
 4. In **Impostazioni → Dispositivi e servizi → Aggiungi integrazione**, cerca
    **HA Mail Sender**.
 5. Dai un nome alla mail, seleziona l'account Google Mail e scegli un mittente
