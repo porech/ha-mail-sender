@@ -1,0 +1,118 @@
+{
+  "title": "HA Mail Sender",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Gespeicherte E-Mail",
+        "description": "Wähle ein vorhandenes Google-Mail-Konto. Bei der Einrichtung werden keine E-Mails gesendet.",
+        "data": {
+          "name": "Name der gespeicherten E-Mail",
+          "google_entry_id": "Google-Mail-Konto"
+        }
+      },
+      "message": {
+        "title": "Nachricht und Sendelimit",
+        "data": {
+          "sender": "Bestätigte Absenderadresse",
+          "sender_name": "Anzeigename des Absenders",
+          "to": "An (durch Kommas getrennte Adressen)",
+          "cc": "Cc (durch Kommas getrennte Adressen)",
+          "bcc": "Bcc (durch Kommas getrennte Adressen)",
+          "subject": "Betreff",
+          "body": "Nachricht",
+          "policy": "Sendelimit",
+          "interval_hours": "Mindestabstand in Stunden (nur bei Intervallbegrenzung)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Gmail-Aliasse konnten nicht gelesen werden. Prüfe die Google-Mail-Verbindung und versuche es erneut.",
+      "no_verified_senders": "Keine bestätigten Absender verfügbar.",
+      "invalid_config": "Prüfe die Adressen, die Pflichtfelder und das Sendelimit."
+    },
+    "abort": {
+      "google_account_missing": "Füge zuerst Google Mail unter Einstellungen → Geräte & Dienste hinzu.",
+      "not_loaded": "Lade zuerst diese Integration.",
+      "reset_not_allowed": "Nur fehlgeschlagene Versuche oder Versuche mit unklarem Ergebnis können zurückgesetzt werden.",
+      "reset_complete": "Sperre aufgehoben. Es wurde keine E-Mail gesendet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "menu_options": {
+          "edit": "Gespeicherte E-Mail bearbeiten",
+          "reset": "Versuch mit Fehler oder unklarem Ergebnis zurücksetzen"
+        }
+      },
+      "edit": {
+        "title": "Gespeicherte E-Mail",
+        "description": "Wähle ein vorhandenes Google-Mail-Konto. Bei der Einrichtung werden keine E-Mails gesendet.",
+        "data": {
+          "name": "Name der gespeicherten E-Mail",
+          "google_entry_id": "Google-Mail-Konto"
+        }
+      },
+      "message": {
+        "title": "Nachricht und Sendelimit",
+        "data": {
+          "sender": "Bestätigte Absenderadresse",
+          "sender_name": "Anzeigename des Absenders",
+          "to": "An (durch Kommas getrennte Adressen)",
+          "cc": "Cc (durch Kommas getrennte Adressen)",
+          "bcc": "Bcc (durch Kommas getrennte Adressen)",
+          "subject": "Betreff",
+          "body": "Nachricht",
+          "policy": "Sendelimit",
+          "interval_hours": "Mindestabstand in Stunden (nur bei Intervallbegrenzung)"
+        }
+      },
+      "reset": {
+        "title": "Manuell zurücksetzen",
+        "description": "Prüfe zuerst den Ordner „Gesendet“: Ein Fehler kann auftreten, nachdem Gmail die Nachricht angenommen hat. Die Bestätigung erlaubt einen weiteren Versuch, sendet aber nichts.",
+        "data": {
+          "confirm": "Ich habe mein Postfach geprüft und möchte einen weiteren Versuch erlauben"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Gmail-Aliasse konnten nicht gelesen werden. Prüfe die Google-Mail-Verbindung und versuche es erneut.",
+      "no_verified_senders": "Keine bestätigten Absender verfügbar.",
+      "invalid_config": "Prüfe die Adressen, die Pflichtfelder und das Sendelimit."
+    },
+    "abort": {
+      "google_account_missing": "Füge zuerst Google Mail unter Einstellungen → Geräte & Dienste hinzu.",
+      "not_loaded": "Lade zuerst diese Integration.",
+      "reset_not_allowed": "Nur fehlgeschlagene Versuche oder Versuche mit unklarem Ergebnis können zurückgesetzt werden.",
+      "reset_complete": "Sperre aufgehoben. Es wurde keine E-Mail gesendet."
+    }
+  },
+  "selector": {
+    "policy": {
+      "options": {
+        "daily": "Einmal pro Kalendertag",
+        "interval": "Mindestabstand",
+        "none": "Kein Limit"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "send": {
+        "name": "Senden"
+      }
+    },
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "ready": "Bereit",
+          "pending": "Wird gesendet",
+          "accepted": "Von Gmail angenommen",
+          "failed": "Fehlgeschlagen oder Ergebnis unklar",
+          "uncertain": "Ergebnis unklar"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "title": "HA Mail Sender",
+  "config": {
+    "step": {
+      "user": {
+        "title": "E-mail salvo",
+        "description": "Escolha uma conta existente do Google Mail. A configuração nunca envia e-mails.",
+        "data": {
+          "name": "Nome do e-mail salvo",
+          "google_entry_id": "Conta do Google Mail"
+        }
+      },
+      "message": {
+        "title": "Mensagem e limite de envio",
+        "data": {
+          "sender": "Endereço de remetente verificado",
+          "sender_name": "Nome de exibição do remetente",
+          "to": "Para (endereços separados por vírgulas)",
+          "cc": "Cc (endereços separados por vírgulas)",
+          "bcc": "Cco (endereços separados por vírgulas)",
+          "subject": "Assunto",
+          "body": "Mensagem",
+          "policy": "Limite de envio",
+          "interval_hours": "Intervalo mínimo em horas (somente para o limite por intervalo)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Não foi possível ler os aliases do Gmail. Verifique a conexão com o Google Mail e tente novamente.",
+      "no_verified_senders": "Nenhum remetente verificado disponível.",
+      "invalid_config": "Verifique os endereços, os campos obrigatórios e o limite de envio."
+    },
+    "abort": {
+      "google_account_missing": "Primeiro adicione o Google Mail em Configurações → Dispositivos e serviços.",
+      "not_loaded": "Primeiro carregue esta integração.",
+      "reset_not_allowed": "Só é possível redefinir tentativas com falha ou resultado incerto.",
+      "reset_complete": "Bloqueio removido. Nenhum e-mail foi enviado."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "menu_options": {
+          "edit": "Editar e-mail salvo",
+          "reset": "Redefinir uma tentativa com falha ou resultado incerto"
+        }
+      },
+      "edit": {
+        "title": "E-mail salvo",
+        "description": "Escolha uma conta existente do Google Mail. A configuração nunca envia e-mails.",
+        "data": {
+          "name": "Nome do e-mail salvo",
+          "google_entry_id": "Conta do Google Mail"
+        }
+      },
+      "message": {
+        "title": "Mensagem e limite de envio",
+        "data": {
+          "sender": "Endereço de remetente verificado",
+          "sender_name": "Nome de exibição do remetente",
+          "to": "Para (endereços separados por vírgulas)",
+          "cc": "Cc (endereços separados por vírgulas)",
+          "bcc": "Cco (endereços separados por vírgulas)",
+          "subject": "Assunto",
+          "body": "Mensagem",
+          "policy": "Limite de envio",
+          "interval_hours": "Intervalo mínimo em horas (somente para o limite por intervalo)"
+        }
+      },
+      "reset": {
+        "title": "Redefinição manual",
+        "description": "Primeiro verifique a pasta Enviados: pode ocorrer um erro depois que o Gmail aceitar a mensagem. A confirmação permite outra tentativa, mas não envia nada.",
+        "data": {
+          "confirm": "Verifiquei minha caixa de e-mail e quero permitir outra tentativa"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Não foi possível ler os aliases do Gmail. Verifique a conexão com o Google Mail e tente novamente.",
+      "no_verified_senders": "Nenhum remetente verificado disponível.",
+      "invalid_config": "Verifique os endereços, os campos obrigatórios e o limite de envio."
+    },
+    "abort": {
+      "google_account_missing": "Primeiro adicione o Google Mail em Configurações → Dispositivos e serviços.",
+      "not_loaded": "Primeiro carregue esta integração.",
+      "reset_not_allowed": "Só é possível redefinir tentativas com falha ou resultado incerto.",
+      "reset_complete": "Bloqueio removido. Nenhum e-mail foi enviado."
+    }
+  },
+  "selector": {
+    "policy": {
+      "options": {
+        "daily": "Uma vez por dia do calendário",
+        "interval": "Intervalo mínimo",
+        "none": "Sem limite"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "send": {
+        "name": "Enviar"
+      }
+    },
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "ready": "Pronto",
+          "pending": "Enviando",
+          "accepted": "Aceito pelo Gmail",
+          "failed": "Falha ou resultado incerto",
+          "uncertain": "Resultado incerto"
+        }
+      }
+    }
+  }
+}

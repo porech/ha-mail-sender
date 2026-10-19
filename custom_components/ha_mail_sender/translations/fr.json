@@ -1,0 +1,118 @@
+{
+  "title": "HA Mail Sender",
+  "config": {
+    "step": {
+      "user": {
+        "title": "E-mail enregistré",
+        "description": "Choisissez un compte Google Mail existant. La configuration n’envoie jamais d’e-mail.",
+        "data": {
+          "name": "Nom de l’e-mail enregistré",
+          "google_entry_id": "Compte Google Mail"
+        }
+      },
+      "message": {
+        "title": "Message et limite d’envoi",
+        "data": {
+          "sender": "Adresse d’expéditeur vérifiée",
+          "sender_name": "Nom affiché de l’expéditeur",
+          "to": "À (adresses séparées par des virgules)",
+          "cc": "Cc (adresses séparées par des virgules)",
+          "bcc": "Cci (adresses séparées par des virgules)",
+          "subject": "Objet",
+          "body": "Message",
+          "policy": "Limite d’envoi",
+          "interval_hours": "Intervalle minimal en heures (uniquement pour la limite par intervalle)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de lire les alias Gmail. Vérifiez la connexion à Google Mail et réessayez.",
+      "no_verified_senders": "Aucun expéditeur vérifié n’est disponible.",
+      "invalid_config": "Vérifiez les adresses, les champs obligatoires et la limite d’envoi."
+    },
+    "abort": {
+      "google_account_missing": "Ajoutez d’abord Google Mail dans Paramètres → Appareils et services.",
+      "not_loaded": "Chargez d’abord cette intégration.",
+      "reset_not_allowed": "Seules les tentatives échouées ou au résultat incertain peuvent être réinitialisées.",
+      "reset_complete": "Restriction levée. Aucun e-mail n’a été envoyé."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "menu_options": {
+          "edit": "Modifier l’e-mail enregistré",
+          "reset": "Réinitialiser une tentative échouée ou au résultat incertain"
+        }
+      },
+      "edit": {
+        "title": "E-mail enregistré",
+        "description": "Choisissez un compte Google Mail existant. La configuration n’envoie jamais d’e-mail.",
+        "data": {
+          "name": "Nom de l’e-mail enregistré",
+          "google_entry_id": "Compte Google Mail"
+        }
+      },
+      "message": {
+        "title": "Message et limite d’envoi",
+        "data": {
+          "sender": "Adresse d’expéditeur vérifiée",
+          "sender_name": "Nom affiché de l’expéditeur",
+          "to": "À (adresses séparées par des virgules)",
+          "cc": "Cc (adresses séparées par des virgules)",
+          "bcc": "Cci (adresses séparées par des virgules)",
+          "subject": "Objet",
+          "body": "Message",
+          "policy": "Limite d’envoi",
+          "interval_hours": "Intervalle minimal en heures (uniquement pour la limite par intervalle)"
+        }
+      },
+      "reset": {
+        "title": "Réinitialisation manuelle",
+        "description": "Vérifiez d’abord les messages envoyés : une erreur peut survenir après l’acceptation du message par Gmail. La confirmation autorise une nouvelle tentative, mais n’envoie rien.",
+        "data": {
+          "confirm": "J’ai vérifié ma boîte mail et je souhaite autoriser une nouvelle tentative"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de lire les alias Gmail. Vérifiez la connexion à Google Mail et réessayez.",
+      "no_verified_senders": "Aucun expéditeur vérifié n’est disponible.",
+      "invalid_config": "Vérifiez les adresses, les champs obligatoires et la limite d’envoi."
+    },
+    "abort": {
+      "google_account_missing": "Ajoutez d’abord Google Mail dans Paramètres → Appareils et services.",
+      "not_loaded": "Chargez d’abord cette intégration.",
+      "reset_not_allowed": "Seules les tentatives échouées ou au résultat incertain peuvent être réinitialisées.",
+      "reset_complete": "Restriction levée. Aucun e-mail n’a été envoyé."
+    }
+  },
+  "selector": {
+    "policy": {
+      "options": {
+        "daily": "Une fois par jour calendaire",
+        "interval": "Intervalle minimal",
+        "none": "Aucune limite"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "send": {
+        "name": "Envoyer"
+      }
+    },
+    "sensor": {
+      "status": {
+        "name": "État",
+        "state": {
+          "ready": "Prêt",
+          "pending": "Envoi en cours",
+          "accepted": "Accepté par Gmail",
+          "failed": "Échec ou résultat incertain",
+          "uncertain": "Résultat incertain"
+        }
+      }
+    }
+  }
+}

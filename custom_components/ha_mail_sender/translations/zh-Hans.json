@@ -1,0 +1,118 @@
+{
+  "title": "HA Mail Sender",
+  "config": {
+    "step": {
+      "user": {
+        "title": "已保存的邮件",
+        "description": "选择已有的 Google Mail 账号。设置过程中不会发送任何邮件。",
+        "data": {
+          "name": "已保存邮件的名称",
+          "google_entry_id": "Google Mail 账号"
+        }
+      },
+      "message": {
+        "title": "邮件内容与发送限制",
+        "data": {
+          "sender": "已验证的发件人地址",
+          "sender_name": "发件人显示名称",
+          "to": "收件人（多个地址以逗号分隔）",
+          "cc": "抄送（多个地址以逗号分隔）",
+          "bcc": "密送（多个地址以逗号分隔）",
+          "subject": "主题",
+          "body": "邮件正文",
+          "policy": "发送限制",
+          "interval_hours": "最短间隔小时数（仅用于间隔限制）"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "无法读取 Gmail 别名。请检查 Google Mail 连接后重试。",
+      "no_verified_senders": "没有可用的已验证发件人。",
+      "invalid_config": "请检查邮件地址、必填字段和发送限制。"
+    },
+    "abort": {
+      "google_account_missing": "请先在“设置 → 设备与服务”中添加 Google Mail。",
+      "not_loaded": "请先加载此集成。",
+      "reset_not_allowed": "只能重置失败或结果不确定的发送尝试。",
+      "reset_complete": "发送限制记录已重置。未发送任何邮件。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "menu_options": {
+          "edit": "编辑已保存的邮件",
+          "reset": "重置失败或结果不确定的发送尝试"
+        }
+      },
+      "edit": {
+        "title": "已保存的邮件",
+        "description": "选择已有的 Google Mail 账号。设置过程中不会发送任何邮件。",
+        "data": {
+          "name": "已保存邮件的名称",
+          "google_entry_id": "Google Mail 账号"
+        }
+      },
+      "message": {
+        "title": "邮件内容与发送限制",
+        "data": {
+          "sender": "已验证的发件人地址",
+          "sender_name": "发件人显示名称",
+          "to": "收件人（多个地址以逗号分隔）",
+          "cc": "抄送（多个地址以逗号分隔）",
+          "bcc": "密送（多个地址以逗号分隔）",
+          "subject": "主题",
+          "body": "邮件正文",
+          "policy": "发送限制",
+          "interval_hours": "最短间隔小时数（仅用于间隔限制）"
+        }
+      },
+      "reset": {
+        "title": "手动重置",
+        "description": "请先检查“已发送”文件夹：Gmail 接受邮件后仍可能发生错误。确认后将允许再次尝试，但不会发送任何邮件。",
+        "data": {
+          "confirm": "我已检查邮箱，并希望允许再次尝试"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "无法读取 Gmail 别名。请检查 Google Mail 连接后重试。",
+      "no_verified_senders": "没有可用的已验证发件人。",
+      "invalid_config": "请检查邮件地址、必填字段和发送限制。"
+    },
+    "abort": {
+      "google_account_missing": "请先在“设置 → 设备与服务”中添加 Google Mail。",
+      "not_loaded": "请先加载此集成。",
+      "reset_not_allowed": "只能重置失败或结果不确定的发送尝试。",
+      "reset_complete": "发送限制记录已重置。未发送任何邮件。"
+    }
+  },
+  "selector": {
+    "policy": {
+      "options": {
+        "daily": "每个自然日一次",
+        "interval": "最短间隔",
+        "none": "无限制"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "send": {
+        "name": "发送"
+      }
+    },
+    "sensor": {
+      "status": {
+        "name": "状态",
+        "state": {
+          "ready": "就绪",
+          "pending": "正在发送",
+          "accepted": "Gmail 已接受",
+          "failed": "失败或结果不确定",
+          "uncertain": "结果不确定"
+        }
+      }
+    }
+  }
+}

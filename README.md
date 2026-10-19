@@ -8,7 +8,14 @@ has its own persistent send limit.
 Gmail HTTP responses. Live Gmail delivery and Alexa activation still need testing
 on a real installation. This is not an official Home Assistant or Google project.
 
-[Guida in italiano](docs/it/INSTALLAZIONE.md)
+**Documentation:** [English installation guide](docs/installation.md) ·
+[Italian translation](docs/it/INSTALLAZIONE.md)
+
+English is the project's primary language for documentation, code, issues and
+release notes. The interface follows your Home Assistant profile language, with
+English as the fallback. Available translations: English, German, Spanish, French,
+Italian, Brazilian Portuguese and Simplified Chinese.
+See [translation guidelines](docs/translations.md) to contribute another language.
 
 ## Why another integration?
 

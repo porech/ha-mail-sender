@@ -1,5 +1,7 @@
 # Installazione e uso
 
+[English installation guide](../installation.md)
+
 HA Mail Sender salva mail precompilate e le invia tramite Gmail, con un limite
 indipendente per ciascuna mail e un pulsante collegabile ad Alexa.
 
