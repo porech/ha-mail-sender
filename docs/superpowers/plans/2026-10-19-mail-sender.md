@@ -43,7 +43,7 @@ Consumes Task 1 interfaces; produces add/edit/send/status/reset native HA flows.
 Files: README, Italian guide, license, HACS metadata, CI and example dashboard.
 - [x] Explain installation, Google Mail OAuth prerequisites, Alexa routine, limits and errors.
 - [x] Run full pytest and Ruff checks; review source and fix important issues.
-- [ ] Create/push public repo, inspect CI, tag prerelease after checks pass.
+- [x] Create/push public repo, inspect CI, tag prerelease after checks pass.
 
 ## Rulings and progress
 
@@ -58,4 +58,6 @@ Verification: 36 tests pass on Home Assistant 2026.2.3 / Python 3.13 and
 failures; replaced it with an acknowledged atomic, file/directory-fsynced store.
 Regression tests reproduce and prevent submission on failed storage replacement.
 The reviewer verified the fix and reported no remaining important issues.
-Publication remains pending until CI completes.
+Published https://github.com/porech/ha-mail-sender and tagged v0.1.0-beta.1.
+GitHub Actions runs 39262059507 and 39262123942 passed both test environments,
+Ruff and hassfest. No live Home Assistant configuration or mail delivery was changed.
